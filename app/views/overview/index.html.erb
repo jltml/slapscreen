@@ -1,0 +1,33 @@
+<h3 class="font-bold text-2xl">stocks</h3>
+
+<%= @portfolio_value %>
+
+<details>
+  <summary>
+    debug info
+  </summary>
+  <details>
+    <summary>
+      quotes
+    </summary>
+    <p>
+      <%= debug @quotes if @quotes %>
+    </p>
+  </details>
+  <details>
+    <summary>
+      charts
+    </summary>
+    <p>
+      <%= debug @charts if @charts %>
+    </p>
+  </details>
+  <details>
+    <summary>
+      changes
+    </summary>
+    <p>
+      <%= debug @changes if @changes %>
+    </p>
+  </details>
+</details>

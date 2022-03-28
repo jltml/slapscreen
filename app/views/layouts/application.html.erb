@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slapscreen</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Refresh every 5 minutes! -->
+    <meta http-equiv="refresh" content="300">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body class="h-screen grid grid-rows-auto-1fr-auto">
+    <header class="flex flex-row bg-blue-600 dark:bg-blue-700 py-3 px-4 text-white w-full">
+      <!-- <h1 class="children:inline-block children:text-white children:hover:text-gray-300 children:hover:transition-colors children:px-1"> -->
+      <span class="basis-1/2 text-2xl">
+        <%= link_to "slapscreen", root_path, class: "font-semibold #{current_page?(root_path) ? "underline-dotted" : "no-underline"}" %>
+      </span>
+      <span class="basis-1/2 text-right leading-loose align-middle text-gray-200">
+        made with ♥ and <%= link_to "rails", "https://rubyonrails.org", target: :_blank, class: "underline" %> by <%= link_to "jack mapellentz", "https://jltml.me", target: :_blank, class: "underline" %>
+      </span>
+    </header>
+    <!-- p-8 bg-white text-black dark:bg-gray-800 dark:text-gray-200 -->
+    <main class="container mx-auto">
+      <%= yield %>
+    </main>
+    <div class="marquee">
+      <div class="marquee-inner">
+        <div class="marquee-content">
+          <div class="overflow-x-hidden bg-black text-white font-mono text-2xl py-2">
+            <div class="flex w-[fit-content]">
+                <%# console %>
+                <% @changes.each do |stock| %>
+                  <%= turbo_stream_from stock  %>
+                  <div id="<%= "#{stock[0].to_s.upcase}_ticker" %>">
+                    <% @stock = stock %>
+                    <%= render "ticker" %>
+                  </div>
+                  <%# render partial: "ticker", locals: {stock: stock} %>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

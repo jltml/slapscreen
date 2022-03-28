@@ -1,0 +1,24 @@
+<h3 class="font-bold text-2xl">stocks</h3>
+<p>
+  <% StockQuote::Stock.new(api_key: "pk_012b97cae3824b30aa8d4863194544fe") %>
+    <% Stock.all.each do |stock| %>
+      <img src="<%= StockQuote::Stock.logo(stock.ticker.to_s).url %>" alt="">
+      <% quote = StockQuote::Stock.quote(stock.ticker.to_s) %>
+      <%= quote.symbol %>
+      <%= "(#{quote.company_name})" %>
+      <%= " - " %>
+      <%= quote.latest_price %>
+      <%= " @ " %>
+      <%= Time.strptime(quote.iex_last_updated.to_s,'%Q') %>
+      <% chart = StockQuote::Stock.chart(stock.ticker.to_s).chart %>
+      <% history = {} %>
+      <% chart.each do |day| %>
+        <% history[day["label"]] = day["close"] %>
+      <% end %>
+      <%= line_chart history %>
+    <% end %>
+</p>
+
+<div id="ticker" class="w-full bg-black">
+
+</div>
