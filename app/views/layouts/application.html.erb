@@ -23,7 +23,7 @@
       </span>
     </header>
     <!-- p-8 bg-white text-black dark:bg-gray-800 dark:text-gray-200 -->
-    <main class="container mx-auto">
+    <main class="w-full h-full">
       <%= yield %>
     </main>
     <div class="marquee">
@@ -33,7 +33,7 @@
             <div class="flex w-[fit-content]">
                 <%# console %>
                 <% @changes.each do |stock| %>
-                  <%= turbo_stream_from stock  %>
+                  <%# turbo_stream_from stock  %>
                   <div id="<%= "#{stock[0].to_s.upcase}_ticker" %>">
                     <% @stock = stock %>
                     <%= render "ticker" %>
