@@ -11,10 +11,12 @@ class ApplicationController < ActionController::Base
     get_quotes
     @changes = {}
     @quotes.each do |quote|
-      percent_change = quote.change_percent * 100.0 if quote.change_percent
-      dollar_change = quote.change if quote.change
-      price = latest_or_extended_price(quote)
-      @changes[quote.symbol] = {percent: percent_change.round(2), dollar: dollar_change, price: price}
+      unless quote.nil?
+        percent_change = quote.change_percent * 100.0
+        dollar_change = quote.change
+        price = latest_or_extended_price(quote)
+        @changes[quote.symbol] = {percent: percent_change.round(2), dollar: dollar_change, price: price}
+      end
     end
   end
 
