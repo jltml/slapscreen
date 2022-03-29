@@ -9,14 +9,14 @@ class ApplicationController < ActionController::Base
 
   def get_changes
     get_quotes
+    @quotes_that_worked = []
     @changes = {}
     @quotes.each do |quote|
-      unless quote.nil?
-        percent_change = quote.change_percent * 100.0
-        dollar_change = quote.change
-        price = latest_or_extended_price(quote)
-        @changes[quote.symbol] = {percent: percent_change.round(2), dollar: dollar_change, price: price}
-      end
+      percent_change = quote.change_percent * 100.0
+      dollar_change = quote.change
+      price = latest_or_extended_price(quote)
+      @changes[quote.symbol] = {percent: percent_change.round(2), dollar: dollar_change, price: price}
+      @quotes_that_worked << quote
     end
   end
 
