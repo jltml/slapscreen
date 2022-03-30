@@ -26,6 +26,9 @@
     <main class="w-full h-full">
       <%= yield %>
     </main>
+    <div class="text-center bg-black text-slate-400 font-mono py-1">
+      <p>quotes last updated <%= local_time_ago(Time.strptime(@quotes.first.iex_last_updated.to_s,'%Q')) %></p>
+    </div>
     <div class="marquee">
       <div class="marquee-inner">
         <div class="marquee-content">
