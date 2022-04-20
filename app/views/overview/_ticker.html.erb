@@ -1,6 +1,6 @@
 <span class="grid grid-rows-2 grid-cols-[minmax(60px,_1fr)_minmax(10em,_auto)] px-2">
   <span class="row-span-2 mr-2">
-    <img src="<%= StockQuote::Stock.logo(@stock).url %>" alt="<%= @stock[0].upcase %> logo" class="absolute top-0 bottom-0 m-auto rounded align-middle max-h-[60px] max-w-[60px]">
+    <img src="<%= @stock_logo_urls[@stock[0].upcase] %>" alt="<%= @stock[0].upcase %> logo" class="absolute top-0 bottom-0 m-auto rounded align-middle max-h-[60px] max-w-[60px]">
   </span>
   <span class="mx-2 col-start-2">
     <%= "#{@stock[0].upcase}" %>

@@ -11,15 +11,15 @@ class ApplicationController < ActionController::Base
     get_quotes
     @changes = {}
     @quotes.each do |quote|
-      if quote.change_percent.nil?
-        percent_change = 0
+      percent_change = if quote.change_percent.nil?
+        0
       else
-        percent_change = quote.change_percent * 100.0
+        quote.change_percent * 100.0
       end
-      if quote.change.nil?
-        dollar_change = 0
+      dollar_change = if quote.change.nil?
+        0
       else
-        dollar_change = quote.change
+        quote.change
       end
       price = latest_or_extended_price(quote)
       @changes[quote.symbol] = {percent: percent_change.round(2), dollar: dollar_change, price: price}
@@ -49,10 +49,21 @@ class ApplicationController < ActionController::Base
     @portfolio_value = portfolio_value
   end
 
+  def get_logos
+    @stock_logo_urls = {}
+    Stock.all.each do |stock|
+      unless stock.logo_url?
+        stock.logo_url = StockQuote::Stock.logo(stock.ticker.to_s).url
+        stock.save
+      end
+      @stock_logo_urls[stock.ticker.to_s.upcase] = stock.logo_url
+    end
+  end
+
   private
 
   def initialize_stockquote
-    StockQuote::Stock.new(api_key: "pk_012b97cae3824b30aa8d4863194544fe")
+    StockQuote::Stock.new(api_key: "pk_4f49c43b82a9475a888f43d7cc37db0a")
   end
 
   def latest_or_extended_price(quote)

@@ -3,6 +3,7 @@ class OverviewController < ApplicationController
     # get_charts
     get_changes
     get_portfolio_value
+    get_logos
   end
 
   # def ticker

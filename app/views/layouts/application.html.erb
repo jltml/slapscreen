@@ -3,8 +3,13 @@
   <head>
     <title>Slapscreen</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <!-- Refresh every 5 minutes! -->
-    <meta http-equiv="refresh" content="300">
+    <% if @quotes.first.latest_source == "Close" %>
+      <!-- Markets closed: refresh every 60 minutes! -->
+      <meta http-equiv="refresh" content="3600">
+    <% else %>
+      <!-- Markets closed: refresh every 5 minutes! -->
+      <meta http-equiv="refresh" content="300">
+    <% end %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

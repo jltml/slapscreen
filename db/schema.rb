@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_12_022103) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_20_154941) do
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "logo_url"
   end
 
 end
