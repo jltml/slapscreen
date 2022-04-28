@@ -88,3 +88,5 @@ gem "money", "~> 6.16"
 gem "monetize", "~> 1.12"
 
 gem "render_async", "~> 2.1"
+
+gem "launchy", "~> 2.5"

@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh -i
+
+printf "=> cd $(dirname "$0")\n"
+cd $(dirname "$0")
+printf "=> OPEN_SLAPSCREEN=true $(dirname \"$0\")/bin/rails server\n"
+OPEN_SLAPSCREEN=true $(dirname "$0")/bin/rails server
