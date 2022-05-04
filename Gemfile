@@ -87,6 +87,13 @@ gem "money", "~> 6.16"
 
 gem "monetize", "~> 1.12"
 
-gem "render_async", "~> 2.1"
+# gem "render_async", "~> 2.1"
 
+# For opening the site automatically when running bin/dev with OPEN_SLAPSCREEN=true
 gem "launchy", "~> 2.5"
+
+# Admin dashboard
+gem "trestle", "~> 0.9.5"
+
+# For Trestle
+gem "sassc-rails", "~> 2.1"

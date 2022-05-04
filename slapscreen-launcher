@@ -8,9 +8,9 @@ cat <<- "EOF"
 / __| |/ _` | '_ \/ __|/ __| '__/ _ \/ _ \ '_ \
 \__ \ | (_| | |_) \__ \ (__| | |  __/  __/ | | |
 |___/_|\__,_| .__/|___/\___|_|  \___|\___|_| |_|
-       | |
-       |_|
-              by Jack MapelLentz (https://jltml.me)
+            | |
+            |_|
+                by Jack MapelLentz (https://jltml.me)
 
 EOF
 
@@ -28,6 +28,8 @@ printf "=> Stopping conflicting processes\n"
     printf "=> Stopping running redis-server process\n"
     printf "=> kill -2 $(pgrep -f "redis-server")\n"
     kill -2 $(pgrep -f "redis-server")
+  else
+    printf "=> Nothing to stop!\n"
   fi
 
 printf "=> cd $(dirname "$0")\n"

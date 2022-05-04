@@ -7,8 +7,19 @@
       <!-- Markets closed: refresh every 60 minutes! -->
       <meta http-equiv="refresh" content="3600">
     <% else %>
-      <!-- Markets not closed: refresh every 5 minutes! -->
-      <meta http-equiv="refresh" content="300">
+      <!-- Markets not closed: refresh every <%= (8970.0/((50000.0-(4*(@quotes.count*(24*3+17.5*5))))/(@quotes.count * 4.0))) %> minutes! (<%= (8970.0/((50000.0-(4*(@quotes.count*(24*3+17.5*5))))/(@quotes.count * 4.0)) * 60.0).ceil %> seconds with ceiling function) -->
+      <!-- 4 credits / stock / refresh
+      50,000 / month
+      23 weekdays / month
+      markets open 6.5 hours
+      markets open 149.5 hours / month
+      markets open 8970 mintues / month
+      [# of stocks] * 4 = credits used on refresh
+      50,000 credits / ([# of stocks] * 4) = # of refreshes / month
+      8970 minutes/month / (50,000 credits / ([# of stocks] * 4)) -->
+
+      <!-- (minutes_markets_open/((credits_per_month-(credits_per_stock_per_refresh*(@quotes.count*(weekend_hours_per_day*weekend_days_plus_one+non_market_hours*weekdays))))/(@quotes.count * credits_per_refresh)) * sixty_seconds_per_minute).ceil -->
+      <meta http-equiv="refresh" content="<%= (8970.0/((50000.0-(4*(@quotes.count*(24*3+17.5*5))))/(@quotes.count * 4.0)) * 60.0).ceil %>">
     <% end %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -21,7 +32,7 @@
     <header class="flex flex-row bg-blue-600 dark:bg-blue-700 py-3 px-4 text-white w-full">
       <!-- <h1 class="children:inline-block children:text-white children:hover:text-gray-300 children:hover:transition-colors children:px-1"> -->
       <span class="basis-1/2 text-2xl">
-        <%= link_to "slapscreen", root_path, class: "font-semibold #{current_page?(root_path) ? "underline-dotted" : "no-underline"}" %>
+        <%= link_to "slapscreen", trestle_path, class: "font-semibold #{current_page?(root_path) ? "underline-dotted" : "no-underline"}" %>
       </span>
       <span class="basis-1/2 text-right leading-loose align-middle text-gray-200">
         made with ♥ and <%= link_to "rails", "https://rubyonrails.org", target: :_blank, class: "underline" %> by <%= link_to "jack mapellentz", "https://jltml.me", target: :_blank, class: "underline" %>
