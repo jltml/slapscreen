@@ -1,4 +1,4 @@
 web: bin/rails server -p 3000
 js: yarn build --watch
 css: yarn build:css --watch
-redis: /usr/local/opt/redis/bin/redis-server /usr/local/etc/redis.conf
+redis: redis-server $(brew --prefix)/etc/redis.conf
