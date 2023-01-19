@@ -86,7 +86,7 @@ GEM
     childprocess (4.1.0)
     clearbit (0.3.3)
       nestful (~> 1.1.0)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     cssbundling-rails (1.0.0)
       railties (>= 6.0.0)
@@ -98,11 +98,11 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.10.0)
     ffi (1.15.5)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
-    i18n (1.9.1)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
     io-wait (0.2.1)
@@ -141,7 +141,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
-    minitest (5.15.0)
+    minitest (5.17.0)
     monetize (1.12.0)
       money (~> 6.12)
     money (6.16.0)
@@ -166,6 +166,8 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.1-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     parallel (1.21.0)
     parser (3.1.0.0)
@@ -270,7 +272,7 @@ GEM
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
@@ -294,6 +296,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
